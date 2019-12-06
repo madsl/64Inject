@@ -165,7 +165,7 @@ namespace _64Inject
                 if (Encrypt)
                 {
                     Cll.Log.WriteLine("Creating encrypted output.");
-                    string inPath = Environment.CurrentDirectory + "\\base";
+                    string inPath = Environment.CurrentDirectory + "/base";
                     _continue = NusContent.Encrypt(inPath, OutPath);
                 }
                 else
@@ -203,7 +203,7 @@ namespace _64Inject
                 byte[] sizeB = new byte[4];
                 byte[] nameB = new byte[0x18];
 
-                fs = File.Open("base\\content\\FrameLayout.arc", FileMode.Open);
+                fs = File.Open("base/content/FrameLayout.arc", FileMode.Open);
                 fs.Read(magic, 0, 4);
 
                 if (magic[0] == 'S' &&
@@ -360,17 +360,17 @@ namespace _64Inject
                 return false;
             }
 
-            if (!NusContent.ConvertToTGA(bootTvImg, currentDir + "\\base\\meta\\bootTvTex.tga"))
+            if (!NusContent.ConvertToTGA(bootTvImg, currentDir + "/base/meta/bootTvTex.tga"))
             {
                 Cll.Log.WriteLine("Error creating \"bootTvTex.tga\" file.");
                 return false;
             }
-            if (!NusContent.ConvertToTGA(bootDrcImg, currentDir + "\\base\\meta\\bootDrcTex.tga"))
+            if (!NusContent.ConvertToTGA(bootDrcImg, currentDir + "/base/meta/bootDrcTex.tga"))
             {
                 Cll.Log.WriteLine("Error creating \"bootDrcTex.tga\" file.");
                 return false;
             }
-            if (!NusContent.ConvertToTGA(iconImg, currentDir + "\\base\\meta\\iconTex.tga"))
+            if (!NusContent.ConvertToTGA(iconImg, currentDir + "/base/meta/iconTex.tga"))
             {
                 Cll.Log.WriteLine("Error creating \"iconTex.tga\" file.");
                 return false;
@@ -402,8 +402,8 @@ namespace _64Inject
             {
                 Cll.Log.WriteLine("Editing \"app.xml\" and \"meta.xml\" files.");
 
-                xmlApp.Load("base\\code\\app.xml");
-                xmlMeta.Load("base\\meta\\meta.xml");
+                xmlApp.Load("base/code/app.xml");
+                xmlMeta.Load("base/meta/meta.xml");
 
                 XmlNode app_title_id = xmlApp.SelectSingleNode("app/title_id");
                 XmlNode app_group_id = xmlApp.SelectSingleNode("app/group_id");
@@ -467,8 +467,8 @@ namespace _64Inject
                 meta_shortname_ru.InnerText = ShortName;
                 meta_shortname_zht.InnerText = ShortName;
 
-                XmlWriter app = XmlWriter.Create("base\\code\\app.xml", xmlSettings);
-                XmlWriter meta = XmlWriter.Create("base\\meta\\meta.xml", xmlSettings);
+                XmlWriter app = XmlWriter.Create("base/code/app.xml", xmlSettings);
+                XmlWriter meta = XmlWriter.Create("base/meta/meta.xml", xmlSettings);
 
                 xmlApp.Save(app);
                 xmlMeta.Save(meta);
@@ -494,22 +494,22 @@ namespace _64Inject
 
             try
             {
-                Cll.Log.WriteLine("Empty \"base\\content\\config\" folder.");
-                Directory.Delete("base\\content\\config", true);
-                Directory.CreateDirectory("base\\content\\config");
+                Cll.Log.WriteLine("Empty \"base/content/config\" folder.");
+                Directory.Delete("base/content/config", true);
+                Directory.CreateDirectory("base/content/config");
 
                 Cll.Log.WriteLine("Injecting INI data.");
                 if (!IniIsLoaded)                    
                 {
                     Cll.Log.WriteLine("Injecting an empty INI.");
-                    File.Create("base\\content\\config\\U" + Rom.ProductCodeVersion + ".z64.ini").Close();
-                    Cll.Log.WriteLine("In: \"base\\content\\config\\U" + Rom.ProductCodeVersion + ".z64.ini\"");
+                    File.Create("base/content/config/U" + Rom.ProductCodeVersion + ".z64.ini").Close();
+                    Cll.Log.WriteLine("In: \"base/content/config/U" + Rom.ProductCodeVersion + ".z64.ini\"");
                     Cll.Log.WriteLine("INI injected.");
                 }
-                else if (VCN64ConfigFile.Copy(IniPath, "base\\content\\config\\U" + Rom.ProductCodeVersion + ".z64.ini"))
+                else if (VCN64ConfigFile.Copy(IniPath, "base/content/config/U" + Rom.ProductCodeVersion + ".z64.ini"))
                 {
                     Cll.Log.WriteLine("CRC16: " + Ini.HashCRC16.ToString("X4"));
-                    Cll.Log.WriteLine("In: \"base\\content\\config\\U" + Rom.ProductCodeVersion + ".z64.ini\"");
+                    Cll.Log.WriteLine("In: \"base/content/config/U" + Rom.ProductCodeVersion + ".z64.ini\"");
                     Cll.Log.WriteLine("Injected INI.");
                 }
                 else
@@ -533,15 +533,15 @@ namespace _64Inject
 
             try
             {
-                Cll.Log.WriteLine("Empty \"base\\content\\rom\" folder.");
-                Directory.Delete("base\\content\\rom", true);
-                Directory.CreateDirectory("base\\content\\rom");
+                Cll.Log.WriteLine("Empty \"base/content/rom\" folder.");
+                Directory.Delete("base/content/rom", true);
+                Directory.CreateDirectory("base/content/rom");
 
                 Cll.Log.WriteLine("Injecting ROM.");
-                if (RomN64.ToBigEndian(RomPath, "base\\content\\rom\\U" + Rom.ProductCodeVersion + ".z64"))
+                if (RomN64.ToBigEndian(RomPath, "base/content/rom/U" + Rom.ProductCodeVersion + ".z64"))
                 {
                     Cll.Log.WriteLine("CRC16: " + Rom.HashCRC16.ToString("X4"));
-                    Cll.Log.WriteLine("In: \"base\\content\\rom\\U" + Rom.ProductCodeVersion + ".z64\"");
+                    Cll.Log.WriteLine("In: \"base/content/rom/U" + Rom.ProductCodeVersion + ".z64\"");
                     Cll.Log.WriteLine("Injected ROM.");
                 }
                 else
@@ -591,7 +591,7 @@ namespace _64Inject
         {
             if (IsValidBase("base"))
             {
-                FileStream fs = File.Open("base\\code\\VESSEL.rpx", FileMode.Open);
+                FileStream fs = File.Open("base/code/VESSEL.rpx", FileMode.Open);
                 uint hash = Cll.Security.ComputeCRC32(fs);
                 fs.Close();
 
@@ -638,20 +638,20 @@ namespace _64Inject
         {
             bool valid = true;
             string[] folders = {
-                path + "\\content\\config",
-                path + "\\content\\rom"
+                path + "/content/config",
+                path + "/content/rom"
             };
             string[] files = {
-                path + "\\code\\app.xml",
-                path + "\\code\\cos.xml",
-                path + "\\code\\VESSEL.rpx",
-                path + "\\content\\BuildInfo.txt",
-                path + "\\content\\config.ini",
-                path + "\\content\\FrameLayout.arc",
-                path + "\\meta\\iconTex.tga",
-                path + "\\meta\\bootTvTex.tga",
-                path + "\\meta\\bootDrcTex.tga",
-                path + "\\meta\\meta.xml"
+                path + "/code/app.xml",
+                path + "/code/cos.xml",
+                path + "/code/VESSEL.rpx",
+                path + "/content/BuildInfo.txt",
+                path + "/content/config.ini",
+                path + "/content/FrameLayout.arc",
+                path + "/meta/iconTex.tga",
+                path + "/meta/bootTvTex.tga",
+                path + "/meta/bootDrcTex.tga",
+                path + "/meta/meta.xml"
             };
 
             foreach (string folder in folders)
@@ -683,14 +683,14 @@ namespace _64Inject
             string titleId = NusContent.CheckEncrypted(path);
             if (titleId != null &&
                 NusContent.CheckCommonKeyFiles() &&
-                File.Exists("resources\\jnustool\\JNUSTool.jar"))
+                File.Exists("resources/jnustool/JNUSTool.jar"))
             {
                 string name = NusContent.JNUSToolWrapper(path, 400, 32768, titleId, "/code/cos.xml");
 
-                if (name != null && File.Exists(name + "\\code\\cos.xml"))
+                if (name != null && File.Exists(name + "/code/cos.xml"))
                 {
                     XmlDocument xmlCos = new XmlDocument();
-                    xmlCos.Load(name + "\\code\\cos.xml");
+                    xmlCos.Load(name + "/code/cos.xml");
                     XmlNode cos_argstr = xmlCos.SelectSingleNode("app/argstr");
 
                     Directory.Delete(name, true);
@@ -718,9 +718,9 @@ namespace _64Inject
             else
             {
                 Cll.Log.WriteLine("Some of the following files are missing:");
-                Cll.Log.WriteLine(path + "\\title.tmd");
-                Cll.Log.WriteLine(path + "\\title.tik");
-                Cll.Log.WriteLine(path + "\\title.cert");
+                Cll.Log.WriteLine(path + "/title.tmd");
+                Cll.Log.WriteLine(path + "/title.tik");
+                Cll.Log.WriteLine(path + "/title.cert");
                 return false;
             }
         }

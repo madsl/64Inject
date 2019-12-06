@@ -34,7 +34,7 @@ namespace _64Inject
             }
 
             /*object vesion = null;
-            RegistryKey javaRE = Registry.LocalMachine.OpenSubKey("SOFTWARE\\JavaSoft\\Java Runtime Environment");
+            RegistryKey javaRE = Registry.LocalMachine.OpenSubKey("SOFTWARE/JavaSoft/Java Runtime Environment");
 
             if (javaRE != null)
                 version = javaRE.GetValue("CurrentVersion");
@@ -54,12 +54,12 @@ namespace _64Inject
 
         public static string Check(string path)
         {
-            if (File.Exists(path + "\\code\\app.xml") &&
-                Directory.Exists(path + "\\content") &&
-                File.Exists(path + "\\meta\\meta.xml"))
+            if (File.Exists(path + "/code/app.xml") &&
+                Directory.Exists(path + "/content") &&
+                File.Exists(path + "/meta/meta.xml"))
             {
                 XmlDocument xmlMeta = new XmlDocument();
-                xmlMeta.Load(path + "\\meta\\meta.xml");
+                xmlMeta.Load(path + "/meta/meta.xml");
                 XmlNode meta_title_id = xmlMeta.SelectSingleNode("menu/title_id");
                 return meta_title_id.InnerText;
             }
@@ -68,12 +68,12 @@ namespace _64Inject
 
         public static string CheckEncrypted(string path)
         {
-            if (File.Exists(path + "\\title.tmd") &&
-                File.Exists(path + "\\title.tik") &&
-                File.Exists(path + "\\title.cert"))
+            if (File.Exists(path + "/title.tmd") &&
+                File.Exists(path + "/title.tik") &&
+                File.Exists(path + "/title.cert"))
             {
                 byte[] id = new byte[8];
-                FileStream fs = File.OpenRead(path + "\\title.tmd");
+                FileStream fs = File.OpenRead(path + "/title.tmd");
                 fs.Position = 0x18C;
                 fs.Read(id, 0, 8);
                 fs.Close();
@@ -87,21 +87,21 @@ namespace _64Inject
             if (!Directory.Exists("resources"))
                 Directory.CreateDirectory("resources");
 
-            if (!File.Exists("resources\\pack.bat"))
+            if (!File.Exists("resources/pack.sh"))
             {
-                StreamWriter sw = File.CreateText("resources\\pack.bat");
-                sw.WriteLine("@echo off");
-                sw.WriteLine("cd resources\\nuspacker");
-                sw.Write("java -jar NUSPacker.jar -in %1 -out %2");
+                StreamWriter sw = File.CreateText("resources/pack.sh");
+                // sw.WriteLine("@echo off");
+                sw.WriteLine("cd resources/nuspacker");
+                sw.Write("java -jar NUSPacker.jar -in \"$1\" -out \"$2\"");
                 sw.Close();
             }
 
-            if (!File.Exists("resources\\unpack.bat"))
+            if (!File.Exists("resources/unpack.sh"))
             {
-                StreamWriter sw = File.CreateText("resources\\unpack.bat");
-                sw.WriteLine("@echo off");
-                sw.WriteLine("cd resources\\jnustool");
-                sw.Write("java -jar JNUSTool.jar %1 -file %2");
+                StreamWriter sw = File.CreateText("resources/unpack.sh");
+                // sw.WriteLine("@echo off");
+                sw.WriteLine("cd resources/jnustool");
+                sw.Write("java -jar JNUSTool.jar \"$1\" -file \"$2\"");
                 sw.Close();
             }
         }
@@ -121,15 +121,15 @@ namespace _64Inject
             {
                 try
                 {
-                    if (!Directory.Exists("resources\\nuspacker"))
-                        Directory.CreateDirectory("resources\\nuspacker");
-                    if (!Directory.Exists("resources\\jnustool"))
-                        Directory.CreateDirectory("resources\\jnustool");
+                    if (!Directory.Exists("resources/nuspacker"))
+                        Directory.CreateDirectory("resources/nuspacker");
+                    if (!Directory.Exists("resources/jnustool"))
+                        Directory.CreateDirectory("resources/jnustool");
 
-                    StreamWriter sw = File.CreateText("resources\\nuspacker\\encryptKeyWith");
+                    StreamWriter sw = File.CreateText("resources/nuspacker/encryptKeyWith");
                     sw.WriteLine(key.ToUpper());
                     sw.Close();
-                    sw = File.CreateText("resources\\jnustool\\config");
+                    sw = File.CreateText("resources/jnustool/config");
                     sw.WriteLine(NusContent.JNUSToolConfig.UpdateServer);
                     sw.WriteLine(key.ToUpper());
                     sw.WriteLine("updatetitles.csv");
@@ -155,18 +155,18 @@ namespace _64Inject
             bool jnustoolKeyValid = false;
             bool nuspackerKeyValid = false;
 
-            if (File.Exists("resources\\jnustool\\config"))
+            if (File.Exists("resources/jnustool/config"))
             {
-                sr = File.OpenText("resources\\jnustool\\config");
+                sr = File.OpenText("resources/jnustool/config");
                 sr.ReadLine();
                 jnustoolKey = sr.ReadLine();
                 sr.Close();
                 jnustoolKeyValid = IsValidCommonKey(jnustoolKey);
             }
 
-            if (File.Exists("resources\\nuspacker\\encryptKeyWith"))
+            if (File.Exists("resources/nuspacker/encryptKeyWith"))
             {
-                sr = File.OpenText("resources\\nuspacker\\encryptKeyWith");
+                sr = File.OpenText("resources/nuspacker/encryptKeyWith");
                 nuspackerKey = sr.ReadLine();
                 sr.Close();
                 nuspackerKeyValid = IsValidCommonKey(nuspackerKey);
@@ -178,7 +178,7 @@ namespace _64Inject
             {
                 try
                 {
-                    sw = File.CreateText("resources\\nuspacker\\encryptKeyWith");
+                    sw = File.CreateText("resources/nuspacker/encryptKeyWith");
                     sw.WriteLine(jnustoolKey);
                     sw.Close();
                     return true;
@@ -193,7 +193,7 @@ namespace _64Inject
             {
                 try
                 {
-                    sw = File.CreateText("resources\\jnustool\\config");
+                    sw = File.CreateText("resources/jnustool/config");
                     sw.WriteLine(JNUSToolConfig.UpdateServer);
                     sw.WriteLine(nuspackerKey);
                     sw.WriteLine("updatetitles.csv");
@@ -221,10 +221,12 @@ namespace _64Inject
             if (titleId != null &&
                 CheckCommonKeyFiles() &&
                 GetJavaVersion() != null &&
-                File.Exists("resources\\nuspacker\\NUSPacker.jar"))
+                File.Exists("resources/nuspacker/NUSPacker.jar"))
             {
                 NusContent.CheckBatchFiles();
-                Process encrypt = Process.Start("resources\\pack.bat", "\"" + inputPath + "\" \"" + outputPath + "\"");
+                // Cll.Log.WriteLine("kommer vi saa langt?");
+                Process encrypt = Process.Start("/bin/bash", "resources/pack.sh \"" + inputPath + "\" \"" + outputPath + "\"");
+                // Process encrypt = new Process { StartInfo = new ProcessStartInfo { FileName = "/bin/bash", Arguments = "-c 
                 encrypt.WaitForExit();
                 encrypt.Dispose();
                 return true;
@@ -238,7 +240,7 @@ namespace _64Inject
             if (titleId != null &&
                 CheckCommonKeyFiles() &&
                 GetJavaVersion() != null &&
-                File.Exists("resources\\jnustool\\JNUSTool.jar"))
+                File.Exists("resources/jnustool/JNUSTool.jar"))
             {
                 string name = JNUSToolWrapper(inputPath, 0, Int32.MaxValue, titleId, ".*");
                 if (name != null)
@@ -264,11 +266,11 @@ namespace _64Inject
 
             try
             {
-                string[] directories = Directory.GetDirectories("resources\\jnustool");
+                string[] directories = Directory.GetDirectories("resources/jnustool");
                 foreach (string dir in directories)
                     Directory.Delete(dir, true);
 
-                Directory.CreateDirectory("resources\\jnustool\\tmp_" + titleId);
+                Directory.CreateDirectory("resources/jnustool/tmp_" + titleId);
 
                 string[] file = Directory.GetFiles(inputPath);
                 FileInfo[] fileInfo = new FileInfo[file.Length];
@@ -277,16 +279,16 @@ namespace _64Inject
                 {
                     fileInfo[i] = new FileInfo(file[i]);
                     if (fileInfo[i].Length >= minFileLength && fileInfo[i].Length <= maxFileLength)
-                        File.Copy(inputPath + "\\" + fileInfo[i].Name, "resources\\jnustool\\tmp_" + titleId + "\\" + fileInfo[i].Name, true);
+                        File.Copy(inputPath + "/" + fileInfo[i].Name, "resources/jnustool/tmp_" + titleId + "/" + fileInfo[i].Name, true);
                 }
 
                 NusContent.CheckBatchFiles();
-                Process decrypt = Process.Start("resources\\unpack.bat", titleId + " " + filter);
+                Process decrypt = Process.Start("/bin/bash", "resources/unpack.sh " + titleId + " " + filter);
                 decrypt.WaitForExit();
                 decrypt.Dispose();
 
-                Directory.Delete("resources\\jnustool\\tmp_" + titleId, true);
-                string[] result = Directory.GetDirectories("resources\\jnustool");
+                Directory.Delete("resources/jnustool/tmp_" + titleId, true);
+                string[] result = Directory.GetDirectories("resources/jnustool");
 
                 if (result.Length == 1)
                     return result[0];

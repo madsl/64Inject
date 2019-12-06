@@ -19,7 +19,7 @@ namespace _64Inject
                     int i, last;
 
                     for (i = 0; i < sources.Length; i++)
-                        destinations[i] = destination + "\\" + Path.GetFileName(sources[i]);
+                        destinations[i] = destination + "/" + Path.GetFileName(sources[i]);
 
                     for (i = 0; i < sources.Length; i++)
                         File.Copy(sources[i], destinations[i], overwrite);
@@ -29,7 +29,7 @@ namespace _64Inject
 
                     for (i = 0; i < sourcesDir.Length; i++)
                     {
-                        last = sourcesDir[i].LastIndexOf('\\');
+                        last = sourcesDir[i].LastIndexOf('/');
                         destinationsDir[i] = destination + sourcesDir[i].Substring(last, sourcesDir[i].Length - last);
                     }
 

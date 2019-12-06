@@ -16,7 +16,7 @@ namespace _64Inject
         {
             if (args.Length == 0)
             {
-                FreeConsole();
+                // FreeConsole();
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new _64InjectGUI());

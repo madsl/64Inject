@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>_64Inject</RootNamespace>
     <AssemblyName>64Inject</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -47,6 +47,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,6 +57,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,6 +67,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -74,6 +77,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,6 +87,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <OutputPath>bin\x64\Release\</OutputPath>
@@ -92,6 +97,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
     <OutputPath>bin\Beta\</OutputPath>
@@ -102,6 +108,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|x86'">
     <OutputPath>bin\x86\Beta\</OutputPath>
@@ -112,6 +119,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|x64'">
     <OutputPath>bin\x64\Beta\</OutputPath>
@@ -122,6 +130,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Minor release|AnyCPU'">
     <OutputPath>bin\Minor release\</OutputPath>
@@ -132,6 +141,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Minor release|x86'">
     <OutputPath>bin\x86\Minor release\</OutputPath>
@@ -142,6 +152,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Minor release|x64'">
     <OutputPath>bin\x64\Minor release\</OutputPath>
@@ -152,6 +163,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Revision release|AnyCPU'">
     <OutputPath>bin\Revision release\</OutputPath>
@@ -162,6 +174,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Revision release|x86'">
     <OutputPath>bin\x86\Revision release\</OutputPath>
@@ -172,6 +185,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Revision release|x64'">
     <OutputPath>bin\x64\Revision release\</OutputPath>
@@ -182,6 +196,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -204,11 +219,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HelpString.resx</DependentUpon>
-    </Compile>
-    <Compile Include="HelpString.es.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HelpString.es.resx</DependentUpon>
     </Compile>
     <Compile Include="IconImage.cs" />
     <Compile Include="Log.cs" />
@@ -240,16 +250,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpString.es.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>HelpString.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpString.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>HelpString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -308,6 +312,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PreBuildEvent>"C:\Users\Alberto\source\repos\64Inject\64Inject\CllAssemblyVersion.exe" assemblyInfo "$(ProjectDir)Properties\AssemblyInfo.cs" projectPath "$(ProjectPath)" config "$(ConfigurationName)" platform "$(PlatformName)" title "$(SolutionName)" format "major.minor.build.revision" replaceIn "$(ProjectDir)64Injector.cs"</PreBuildEvent>
+    <!-- <PreBuildEvent>"C:\Users\Alberto\source\repos\64Inject\64Inject\CllAssemblyVersion.exe" assemblyInfo "$(ProjectDir)Properties\AssemblyInfo.cs" projectPath "$(ProjectPath)" config "$(ConfigurationName)" platform "$(PlatformName)" title "$(SolutionName)" format "major.minor.build.revision" replaceIn "$(ProjectDir)64Injector.cs"</PreBuildEvent> -->
   </PropertyGroup>
 </Project>

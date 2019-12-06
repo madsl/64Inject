@@ -39,13 +39,13 @@ namespace _64Inject
             {
                 StringBuilder sb = new StringBuilder();
                 bool warning = false;
-                if (!File.Exists("resources\\nuspacker\\NUSPacker.jar"))
+                if (!File.Exists("resources/nuspacker/NUSPacker.jar"))
                 {
                     sb.AppendLine(HelpString.NUSPacker_Warning);
                     sb.AppendLine("");
                     warning = true;
                 }
-                if (!File.Exists("resources\\jnustool\\JNUSTool.jar"))
+                if (!File.Exists("resources/jnustool/JNUSTool.jar"))
                 {
                     sb.AppendLine(HelpString.JNUSTool_Warning);
                     warning = true;
@@ -72,20 +72,20 @@ namespace _64Inject
             if (injector.BaseIsLoaded)
                 panelLoadedBase.BackgroundImage = Properties.Resources.checkmark_16;
 
-            if (File.Exists("resources\\boot.png"))
+            if (File.Exists("resources/boot.png"))
             {
-                injector.BootTvImg.Frame = new Bitmap("resources\\boot.png");
-                injector.BootDrcImg.Frame = new Bitmap("resources\\boot.png");
+                injector.BootTvImg.Frame = new Bitmap("resources/boot.png");
+                injector.BootDrcImg.Frame = new Bitmap("resources/boot.png");
             }
 
-            if (File.Exists("resources\\icon.png"))
-                injector.IconImg.Frame = new Bitmap("resources\\icon.png");
+            if (File.Exists("resources/icon.png"))
+                injector.IconImg.Frame = new Bitmap("resources/icon.png");
 
-            if (File.Exists("resources\\title_screen.png"))
+            if (File.Exists("resources/title_screen.png"))
             {
-                injector.BootTvImg.TitleScreen = new Bitmap("resources\\title_screen.png");
-                injector.BootDrcImg.TitleScreen = new Bitmap("resources\\title_screen.png");
-                injector.IconImg.TitleScreen = new Bitmap("resources\\title_screen.png");
+                injector.BootTvImg.TitleScreen = new Bitmap("resources/title_screen.png");
+                injector.BootDrcImg.TitleScreen = new Bitmap("resources/title_screen.png");
+                injector.IconImg.TitleScreen = new Bitmap("resources/title_screen.png");
             }
 
             UpdateBootTvPictureBox();
@@ -500,14 +500,14 @@ namespace _64Inject
 
         private void StartVCN64ConfigEditor()
         {
-            if (!Directory.Exists("resources\\vcn64configs"))
-                Directory.CreateDirectory("resources\\vcn64configs");
+            if (!Directory.Exists("resources/vcn64configs"))
+                Directory.CreateDirectory("resources/vcn64configs");
 
             string input = "";
             if (injector.IniIsLoaded)
                 input = injector.IniPath;
 
-            StringBuilder output = new StringBuilder("resources\\vcn64configs\\");
+            StringBuilder output = new StringBuilder("resources/vcn64configs/");
             if (injector.RomIsLoaded)
             {
                 output.Append(injector.Rom.ProductCodeVersion);
@@ -842,7 +842,7 @@ namespace _64Inject
             if (_continue && folderBrowserDialog.ShowDialog() == DialogResult.OK)
             {
                 injector.Encrypt = pack;
-                injector.OutPath = folderBrowserDialog.SelectedPath + "\\" + injector.ShortNameASCII + " [" + injector.TitleId + "]";
+                injector.OutPath = folderBrowserDialog.SelectedPath + "/" + injector.ShortNameASCII + " [" + injector.TitleId + "]";
                 ResultPath = folderBrowserDialog.SelectedPath;
 
                 if (Directory.Exists(injector.OutPath))

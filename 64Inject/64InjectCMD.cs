@@ -29,15 +29,15 @@ namespace _64Inject
             }
             else
             {
-                if (!File.Exists("resources\\nuspacker\\NUSPacker.jar"))
+                if (!File.Exists("resources/nuspacker/NUSPacker.jar"))
                 {
-                    Cll.Log.WriteLine("Warning! \"resources\\nuspacker\\NUSPacker.jar\" not found!");
+                    Cll.Log.WriteLine("Warning! \"resources/nuspacker/NUSPacker.jar\" not found!");
                     Cll.Log.WriteLine("NUSPacker allows you to encrypt the result for WUPInstaller.");
                     Cll.Log.WriteLine("");
                 }
-                if (!File.Exists("resources\\jnustool\\JNUSTool.jar"))
+                if (!File.Exists("resources/jnustool/JNUSTool.jar"))
                 {
-                    Cll.Log.WriteLine("Warning! \"resources\\jnustool\\JNUSTool.jar\" not found!");
+                    Cll.Log.WriteLine("Warning! \"resources/jnustool/JNUSTool.jar\" not found!");
                     Cll.Log.WriteLine("JNUSTool allows you to decrypt Wii U VC games to use as a base.");
                     Cll.Log.WriteLine("");
                 }
@@ -276,7 +276,7 @@ namespace _64Inject
             else
                 outPath = Environment.CurrentDirectory;
 
-            outPath += "\\image.png";
+            outPath += "/image.png";
             Cll.Log.WriteLine("Creating image ----------------------------------------------------------------");
             if (titlePath != null) Cll.Log.WriteLine("title: " + titlePath);
             if (framePath != null) Cll.Log.WriteLine("frame: " + framePath);
@@ -386,7 +386,7 @@ namespace _64Inject
             else
                 outPath = Environment.CurrentDirectory;
 
-            outPath += "\\icon.png";
+            outPath += "/icon.png";
             Cll.Log.WriteLine("Creating icon -----------------------------------------------------------------");
             if (titlePath != null) Cll.Log.WriteLine("title: " + titlePath);
             if (framePath != null) Cll.Log.WriteLine("frame: " + framePath);
@@ -422,7 +422,7 @@ namespace _64Inject
             if (args.Length == 3 && args[1] == "-in")
             {
                 injector.InPath = args[2];
-                injector.OutPath = Environment.CurrentDirectory + "\\" + args[0] + "_result";
+                injector.OutPath = Environment.CurrentDirectory + "/" + args[0] + "_result";
 
                 if (Directory.Exists(injector.OutPath))
                     Directory.Delete(injector.OutPath, true);
@@ -843,7 +843,7 @@ namespace _64Inject
             {
                 if (injector.InPath != null)
                 {
-                    injector.RomPath = injector.InPath + "\\rom.z64";
+                    injector.RomPath = injector.InPath + "/rom.z64";
                     if (File.Exists(injector.RomPath))
                     {
                         injector.Rom = new RomN64(injector.RomPath);
@@ -892,7 +892,7 @@ namespace _64Inject
             {
                 if (injector.InPath != null)
                 {
-                    injector.IniPath = injector.InPath + "\\vc.ini";
+                    injector.IniPath = injector.InPath + "/vc.ini";
                     if (File.Exists(injector.IniPath))
                     {
                         injector.Ini = new VCN64ConfigFile(injector.IniPath);
@@ -934,12 +934,12 @@ namespace _64Inject
             {
                 if (injector.InPath != null)
                 {
-                    injector.BootTvPath = injector.InPath + "\\tv.png";
+                    injector.BootTvPath = injector.InPath + "/tv.png";
                     if (!File.Exists(injector.BootTvPath))
                     {
                         Cll.Log.WriteLine("The boot tv image file \"" + injector.BootTvPath + "\" not exists.");
-                        if (File.Exists("resources\\boot.png"))
-                            injector.BootTvPath = "resources\\boot.png";
+                        if (File.Exists("resources/boot.png"))
+                            injector.BootTvPath = "resources/boot.png";
                         else
                             injector.BootTvPath = null;
                         Cll.Log.WriteLine("A default image will be used as boot tv.");
@@ -950,8 +950,8 @@ namespace _64Inject
                 else
                 {
                     //Cll.Log.WriteLine("The input folder was not specified.");
-                    if (File.Exists("resources\\boot.png"))
-                        injector.BootTvPath = "resources\\boot.png";
+                    if (File.Exists("resources/boot.png"))
+                        injector.BootTvPath = "resources/boot.png";
                     else
                         injector.BootTvPath = null;
                     Cll.Log.WriteLine("A default image will be used as boot tv.");
@@ -976,15 +976,15 @@ namespace _64Inject
             {
                 if (injector.InPath != null)
                 {
-                    injector.BootDrcPath = injector.InPath + "\\drc.png";
+                    injector.BootDrcPath = injector.InPath + "/drc.png";
                     if (!File.Exists(injector.BootDrcPath))
                     {
                         Cll.Log.WriteLine("The boot drc image file \"" + injector.BootDrcPath + "\" not exists.");
                         injector.BootDrcPath = injector.BootTvPath;
                         if (!File.Exists(injector.BootDrcPath))
                         {
-                            if (File.Exists("resources\\boot.png"))
-                                injector.BootDrcPath = "resources\\boot.png";
+                            if (File.Exists("resources/boot.png"))
+                                injector.BootDrcPath = "resources/boot.png";
                             else
                                 injector.BootDrcPath = null;
                             Cll.Log.WriteLine("A default image will be used as boot drc.");
@@ -1001,8 +1001,8 @@ namespace _64Inject
                     injector.BootDrcPath = injector.BootTvPath;
                     if (!File.Exists(injector.BootDrcPath))
                     {
-                        if (File.Exists("resources\\boot.png"))
-                            injector.BootDrcPath = "resources\\boot.png";
+                        if (File.Exists("resources/boot.png"))
+                            injector.BootDrcPath = "resources/boot.png";
                         else
                             injector.BootDrcPath = null;
                         Cll.Log.WriteLine("A default image will be used as boot drc.");
@@ -1030,12 +1030,12 @@ namespace _64Inject
             {
                 if (injector.InPath != null)
                 {
-                    injector.IconPath = injector.InPath + "\\icon.png";
+                    injector.IconPath = injector.InPath + "/icon.png";
                     if (!File.Exists(injector.IconPath))
                     {
                         Cll.Log.WriteLine("The icon file \"" + injector.IconPath + "\" not exists.");
-                        if (File.Exists("resources\\icon.png"))
-                            injector.IconPath = "resources\\icon.png";                        
+                        if (File.Exists("resources/icon.png"))
+                            injector.IconPath = "resources/icon.png";                        
                         else
                             injector.IconPath = null;  
                         Cll.Log.WriteLine("A default image will be used as icon.");
@@ -1046,8 +1046,8 @@ namespace _64Inject
                 else
                 {
                     //Cll.Log.WriteLine("The input folder was not specified.");
-                    if (File.Exists("resources\\icon.png"))
-                        injector.IconPath = "resources\\icon.png";
+                    if (File.Exists("resources/icon.png"))
+                        injector.IconPath = "resources/icon.png";
                     else
                         injector.IconPath = null;
                     Cll.Log.WriteLine("A default image will be used as icon.");
@@ -1073,7 +1073,7 @@ namespace _64Inject
                 Cll.Log.WriteLine("The root folder of 64Inject will be used as the output folder.");
             }
 
-            injector.OutPath += "\\" + injector.ShortNameASCII + " [" + injector.TitleId + "]";
+            injector.OutPath += "/" + injector.ShortNameASCII + " [" + injector.TitleId + "]";
 
             if (Directory.Exists(injector.OutPath))
                 if (Directory.GetDirectories(injector.OutPath).Length != 0 ||
